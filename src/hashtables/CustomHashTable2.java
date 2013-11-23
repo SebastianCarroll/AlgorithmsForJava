@@ -5,13 +5,16 @@ package hashtables;
  * Currently supports:
  * 	- setting size of storage initially
  * 	- Putting and Getting of key, value String Pairs
+ *  - Blocking Resizing of array when load factor reaches cutoff 
  * @author sjc
  */
-public class CustomHashTable {
+public class CustomHashTable2 {
     String[] array;
+    double loadFactor;
     
-    public CustomHashTable(int initialSize){
+    public CustomHashTable2(int initialSize, double lfactor){
         array = new String[initialSize];
+        loadFactor = lfactor;
     }
     
     public String get(String key){
