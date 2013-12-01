@@ -1,5 +1,8 @@
 package hashtables;
 
+import base.MapBase;
+import base.Node;
+
 /**
  * Basic implementation of a HashTable.
  * Currently supports:
@@ -12,7 +15,7 @@ package hashtables;
  *  - Dynamic resizing to reduce wait time
  * @author sjc
  */
-public class CustomHashTable {
+public class CustomHashTable implements MapBase {
     
     Node[] array;
     double cutoffLoadFactor;
@@ -44,6 +47,11 @@ public class CustomHashTable {
         count++;
     }
     
+    public Boolean containsKey(String key) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    
     private void increaseArraySize(){
         int curLen = array.length;
         Node[] newElems = new Node[curLen*2];
@@ -64,4 +72,6 @@ public class CustomHashTable {
     private int hash(String key, int length) {  
         return (Math.abs(key.hashCode())) % length;  
     }
+
+
 }
