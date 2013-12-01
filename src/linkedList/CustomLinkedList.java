@@ -6,6 +6,10 @@ public class CustomLinkedList {
 	
 	private Node head;
 	
+	public CustomLinkedList(){
+		head = null;
+	}
+	
 	public CustomLinkedList(Node h){
 		head = h;
 	}
@@ -24,14 +28,14 @@ public class CustomLinkedList {
 		return new Node("test", "test");
 	}
 	
-	public String toString(){
-		return toString(head);
+	public String stringify(){
+		return stringify(head);
 	}
 	
-	private String toString(Node n){
+	private String stringify(Node n){
 		if(n == null){
 			return "";
 		}
-		return n.toString() + toString(n);
+		return n.stringify() + stringify(n.next);
 	}
 }

@@ -21,7 +21,7 @@ public class Node {
     	return new Node(key, value, next);
     }
     
-    public String toString(){
-    	return "(k: "+ key +",v: "+value+" )";
+    public String stringify(){
+    	return "("+ key +", "+value+")";
     }
 }
