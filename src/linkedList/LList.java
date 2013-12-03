@@ -1,5 +1,7 @@
 package linkedList;
 
+import base.Node;
+
 public class LList {
 	
 	private String key;
@@ -70,6 +72,12 @@ public class LList {
 			return value;
 		}
 		return next.fetch(k);
+	}
+	
+	public Node pop(){
+		Node popped = new Node(key, value);
+		remove(key);
+		return popped;
 	}
 	
 	public String stringify() {

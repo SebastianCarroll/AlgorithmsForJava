@@ -3,6 +3,7 @@ package linkedList;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import base.Node;
 
 public class LListTest {
 
@@ -68,5 +69,25 @@ public class LListTest {
 				cll.stringify(), 
 				"(key2, value2)(key3, value3)(key4, value4)");
 	}
+	
+	@Test
+	public void testPop() {
+		LList cll =  new LList();
+		cll.insert("key5", "value5");
+		cll.insert("key4", "value4");
+		cll.insert("key3", "value3");
+		cll.insert("key2", "value2");
+		cll.insert("key1", "value1");
+		
+		Node popped = cll.pop();
+		assertEquals("Initial Pop", 
+				popped.stringify(), 
+				"(key1, value1)");
+		
+		popped = cll.pop();
+		assertEquals("Second Pop", 
+				popped.stringify(), 
+				"(key2, value2)");
+	}	
 
 }
