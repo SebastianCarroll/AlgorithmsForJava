@@ -2,6 +2,7 @@ package hashtables;
 
 import base.MapBase;
 import base.Node;
+import linkedList.LList;
 
 /**
  * Basic implementation of a HashTable.
@@ -17,34 +18,43 @@ import base.Node;
  */
 public class CustomHashTable implements MapBase {
     
-    Node[] array;
+    LList[] elements;
     double cutoffLoadFactor;
     double currentLoadFactor = 0;
     int count = 0;
     
     public CustomHashTable(int initialSize, double lfactor){
-        array = new Node[initialSize];
+    	elements = new LList[initialSize];
         cutoffLoadFactor = lfactor;
     }
     
     public CustomHashTable(int initialSize){
-        array = new Node[initialSize];
+        elements = new LList[initialSize];
         cutoffLoadFactor = 0.75;
     }
     
     public String get(String key){
-        int index = hash(key, array.length);
-        Node n = array[index];
-        return n.value;
+        int index = hash(key, elements.length);
+        LList n = elements[index];
+        return n.fetch(key);
     }
     
-    public void put(String key, String val){
-        if(count/array.length > cutoffLoadFactor) {
+    public void put(String k, String v){
+        if(tooManyElements()) {
             increaseArraySize();
         }
-        int index = hash(key, array.length);
-        array[index] = new Node(key, val);
+        addNewElement(k, v);
         count++;
+    }
+    
+    private void addNewElement(String k, String v){
+        int index = hash(k, elements.length);
+        LList toAdd = elements[index];
+        toAdd.insert(k, v);
+    }
+    
+    private Boolean tooManyElements(){
+    	return count/elements.length > cutoffLoadFactor;
     }
     
     public Boolean containsKey(String key) {
@@ -53,25 +63,26 @@ public class CustomHashTable implements MapBase {
     }
     
     private void increaseArraySize(){
-        int curLen = array.length;
-        Node[] newElems = new Node[curLen*2];
-        rehashElements(array, newElems);
+        int curLen = elements.length;
+        LList[] newElems = new LList[curLen*2];
+        rehashElements(elements, newElems);
     }
     
-    private void rehashElements(Node[] oldElements, Node[] newElements){
-        for(int i=0; i<oldElements.length; i++){
-            Node oldNode = oldElements[i];
-            if(oldNode != null){
-                int newIndex = hash(oldNode.key, newElements.length);
-                newElements[newIndex] = new Node(oldNode.key, oldNode.value);
-            }
-        }
-        array = newElements;
+    private void rehashElements(LList[] oldElements, LList[] newElements){
+    	for(LList oldList : oldElements){
+    		Node n;
+    		do{
+    			n = oldList.pop();
+    	        int index = hash(n.key, newElements.length);
+    	        LList toAdd = newElements[index];
+    	        toAdd.insert(n.key, n.value);
+    		}
+    		while(n != null);
+    	}
+        elements = newElements;
     }
     
     private int hash(String key, int length) {  
         return (Math.abs(key.hashCode())) % length;  
     }
-
-
 }
