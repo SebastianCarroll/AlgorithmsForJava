@@ -13,7 +13,7 @@ import linkedList.LList;
  *  - Deal with collisions - currently just overwrites if a key
  *  	hashes to the same slot
  * TODO:
- *  - Dynamic resizing to reduce wait time
+ *  - Dynamic resizing to reduce wait time - Advanced: Probably requires threads. 
  * @author sjc
  */
 public class ChainedHashTable implements MapBase {
