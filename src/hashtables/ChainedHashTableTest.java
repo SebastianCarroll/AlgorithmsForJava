@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class CustomHashTableTest {
+public class ChainedHashTableTest {
 
 	@Test
 	public void testGet() {
-		CustomHashTable cht = new CustomHashTable(10);
+		ChainedHashTable cht = new ChainedHashTable(10);
 		cht.put("apple", "apple pie with custard");
 		cht.put("orange", "apple pie with custard");
 		String val = cht.get("apple");
@@ -19,7 +19,7 @@ public class CustomHashTableTest {
 	
 	@Test
 	public void testGetDoesntExist() {
-		CustomHashTable cht = new CustomHashTable(10);
+		ChainedHashTable cht = new ChainedHashTable(10);
 		cht.put("apple", "apple pie with custard");
 		cht.put("orange", "apple pie with custard");
 		String val = cht.get("fred");
@@ -30,7 +30,7 @@ public class CustomHashTableTest {
 	
 	@Test
 	public void testResize() {
-		CustomHashTable cht = new CustomHashTable(5, 0.6);
+		ChainedHashTable cht = new ChainedHashTable(5, 0.6);
 		cht.put("apple", "1");
 		cht.put("orange", "2");
 		cht.put("green", "3");
@@ -48,22 +48,37 @@ public class CustomHashTableTest {
 	
 	@Test
 	public void testDelete() {
-		CustomHashTable cht = new CustomHashTable(5, 0.6);
+		ChainedHashTable cht = new ChainedHashTable(5, 0.6);
 		cht.put("apple", "1");
 		cht.put("orange", "2");
 		cht.put("green", "3");
 		cht.put("red", "4");
 		cht.put("tuttle", "5");
-		cht.put("purple", "6");
-		cht.put("proof", "7");
-		cht.put("jim", "8");
-		cht.put("slow", "9");
+		
 		cht.delete("tuttle");
-		String val = cht.get("tuttle");
 		assertEquals("Deleted element should not be accessible", 
 				null, 
-				val);
+				cht.get("tuttle"));
 		
+		cht.delete("red");
+		assertEquals("Deleted element should not be accessible", 
+				null, 
+				cht.get("red"));
+		
+		cht.delete("green");
+		assertEquals("Deleted element should not be accessible", 
+				null, 
+				cht.get("green"));
+		
+		cht.delete("orange");
+		assertEquals("Deleted element should not be accessible", 
+				null, 
+				cht.get("orange"));
+		
+		cht.delete("apple");
+		assertEquals("Deleted element should not be accessible", 
+				null, 
+				cht.get("apple"));
 	}
 
 }

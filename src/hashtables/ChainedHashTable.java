@@ -10,25 +10,24 @@ import linkedList.LList;
  * 	- setting size of storage initially
  * 	- Putting and Getting of key, value Strings Pairs
  *  - Blocking Resizing of array when load factor reaches cutoff
- * TODO:
  *  - Deal with collisions - currently just overwrites if a key
  *  	hashes to the same slot
+ * TODO:
  *  - Dynamic resizing to reduce wait time
  * @author sjc
  */
-public class CustomHashTable implements MapBase {
+public class ChainedHashTable implements MapBase {
     
-    LList[] elements;
-    double cutoffLoadFactor;
-    double currentLoadFactor = 0;
-    int count = 0;
+    private LList[] elements;
+    private double cutoffLoadFactor;
+    private int count = 0;
     
-    public CustomHashTable(int initialSize, double lfactor){
+    public ChainedHashTable(int initialSize, double lfactor){
     	elements = new LList[initialSize];
         cutoffLoadFactor = lfactor;
     }
     
-    public CustomHashTable(int initialSize){
+    public ChainedHashTable(int initialSize){
         elements = new LList[initialSize];
         cutoffLoadFactor = 0.75;
     }
@@ -68,9 +67,11 @@ public class CustomHashTable implements MapBase {
     	return ((double) count)/elements.length > cutoffLoadFactor;
     }
     
-    public Boolean containsKey(String key) {
-        // TODO Auto-generated method stub
-        return null;
+    public Boolean containsKey(String k) {
+        int index = hash(k, elements.length);
+        LList ll = elements[index];
+        String v = ll.fetch(k);
+        return v != null;
     }
     
     private void increaseArraySize(){
