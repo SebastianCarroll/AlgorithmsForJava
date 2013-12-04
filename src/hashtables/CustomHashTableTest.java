@@ -48,7 +48,22 @@ public class CustomHashTableTest {
 	
 	@Test
 	public void testDelete() {
-		fail("Not implemented");
+		CustomHashTable cht = new CustomHashTable(5, 0.6);
+		cht.put("apple", "1");
+		cht.put("orange", "2");
+		cht.put("green", "3");
+		cht.put("red", "4");
+		cht.put("tuttle", "5");
+		cht.put("purple", "6");
+		cht.put("proof", "7");
+		cht.put("jim", "8");
+		cht.put("slow", "9");
+		cht.delete("tuttle");
+		String val = cht.get("tuttle");
+		assertEquals("Deleted element should not be accessible", 
+				null, 
+				val);
+		
 	}
 
 }

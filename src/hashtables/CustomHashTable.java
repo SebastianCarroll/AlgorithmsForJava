@@ -48,7 +48,7 @@ public class CustomHashTable implements MapBase {
     }
     
     public void delete(String key){
-    	
+    	// TODO: Implement this method
     }
     
     private void addNewElement(String k, String v, LList[] listToAddTo){
