@@ -51,6 +51,22 @@ public class LListTest {
 	}
 	
 	@Test
+	public void testFetchKeyDoesntExist() {
+		LList cll =  new LList();
+		cll.insert("key5", "value5");
+		cll.insert("key4", "value4");
+		cll.insert("key3", "value3");
+		cll.insert("key2", "value2");
+		cll.insert("key1", "value1");
+		assertEquals("Last Key inserted", 
+				cll.fetch("key1"), 
+				"value1");
+		assertEquals("Key That doesnt exist", 
+				null,
+				cll.fetch("key77Fred"));
+	}
+	
+	@Test
 	public void testRemove() {
 		LList cll =  new LList();
 		cll.insert("key5", "value5");

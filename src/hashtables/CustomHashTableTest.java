@@ -7,11 +7,6 @@ import org.junit.Test;
 public class CustomHashTableTest {
 
 	@Test
-	public void testCustomHashTable() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testGet() {
 		CustomHashTable cht = new CustomHashTable(10);
 		cht.put("apple", "apple pie with custard");
@@ -19,6 +14,17 @@ public class CustomHashTableTest {
 		String val = cht.get("apple");
 		assertEquals("Check that getting and setting works", 
 				"apple pie with custard", 
+				val);
+	}
+	
+	@Test
+	public void testGetDoesntExist() {
+		CustomHashTable cht = new CustomHashTable(10);
+		cht.put("apple", "apple pie with custard");
+		cht.put("orange", "apple pie with custard");
+		String val = cht.get("fred");
+		assertEquals("Check that getting returns null if element doesnt exist in the table", 
+				null,
 				val);
 	}
 	
@@ -39,10 +45,10 @@ public class CustomHashTableTest {
 				"5", 
 				val);
 	}
-
+	
 	@Test
-	public void testPut() {
-		fail("Not yet implemented");
+	public void testDelete() {
+		fail("Not implemented");
 	}
 
 }

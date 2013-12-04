@@ -36,7 +36,7 @@ public class CustomHashTable implements MapBase {
     public String get(String key){
         int index = hash(key, elements.length);
         LList n = elements[index];
-        return n.fetch(key);
+        return (n==null) ? null : n.fetch(key);
     }
     
     public void put(String k, String v){
@@ -45,6 +45,10 @@ public class CustomHashTable implements MapBase {
         }
         addNewElement(k, v, elements);
         count++;
+    }
+    
+    public void delete(String key){
+    	
     }
     
     private void addNewElement(String k, String v, LList[] listToAddTo){
@@ -82,9 +86,6 @@ public class CustomHashTable implements MapBase {
     		while(!n.isEmpty()){
     			addNewElement(n.key, n.value, newElements);
     			n = oldList.pop();
-//    	        int index = hash(n.key, newElements.length);
-//    	        LList toAdd = newElements[index];
-//    	        toAdd.insert(n.key, n.value);
     		}
     	}
         elements = newElements;

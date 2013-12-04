@@ -67,9 +67,16 @@ public class LList {
 		return next.remove(k);
 	}
 	
+	/**
+	 * Finds and returns the value associated with the key
+	 * @param k The key to search for
+	 * @return Value associated with the Key or null if the key doesn't exist
+	 */
 	public String fetch(String k){
 		if(key == k){
 			return value;
+		} else if(key == null || next == null){
+			return null;
 		}
 		return next.fetch(k);
 	}
