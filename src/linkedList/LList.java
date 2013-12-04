@@ -87,6 +87,17 @@ public class LList {
 		return popped;
 	}
 	
+	public LList reverse(){
+		if(next == null || next.key == null){
+			return this;
+		}
+		
+		//LList reverse = next.reverse();
+		//head.next = this;
+		
+		return this;
+	}
+	
 	public String stringify() {
 		String toString = stringifyNode();
 		if(next == null){
