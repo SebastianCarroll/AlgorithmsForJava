@@ -21,4 +21,8 @@ public class Node {
     public String stringify(){
     	return "("+ key +", "+value+")";
     }
+    
+    public Boolean isEmpty(){
+    	return key == null && value == null;
+    }
 }

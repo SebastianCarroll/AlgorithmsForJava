@@ -43,18 +43,23 @@ public class CustomHashTable implements MapBase {
         if(tooManyElements()) {
             increaseArraySize();
         }
-        addNewElement(k, v);
+        addNewElement(k, v, elements);
         count++;
     }
     
-    private void addNewElement(String k, String v){
-        int index = hash(k, elements.length);
-        LList toAdd = elements[index];
-        toAdd.insert(k, v);
+    private void addNewElement(String k, String v, LList[] listToAddTo){
+        int index = hash(k, listToAddTo.length);
+        LList toAdd = listToAddTo[index];
+        
+        if(toAdd == null){
+        	listToAddTo[index] = new LList(k,v);
+        } else {
+        	toAdd.insert(k, v);
+        }
     }
     
     private Boolean tooManyElements(){
-    	return count/elements.length > cutoffLoadFactor;
+    	return ((double) count)/elements.length > cutoffLoadFactor;
     }
     
     public Boolean containsKey(String key) {
@@ -70,14 +75,17 @@ public class CustomHashTable implements MapBase {
     
     private void rehashElements(LList[] oldElements, LList[] newElements){
     	for(LList oldList : oldElements){
-    		Node n;
-    		do{
-    			n = oldList.pop();
-    	        int index = hash(n.key, newElements.length);
-    	        LList toAdd = newElements[index];
-    	        toAdd.insert(n.key, n.value);
+    		if(oldList == null){
+    			continue;
     		}
-    		while(n != null);
+    		Node n = oldList.pop();
+    		while(!n.isEmpty()){
+    			addNewElement(n.key, n.value, newElements);
+    			n = oldList.pop();
+//    	        int index = hash(n.key, newElements.length);
+//    	        LList toAdd = newElements[index];
+//    	        toAdd.insert(n.key, n.value);
+    		}
     	}
         elements = newElements;
     }

@@ -24,7 +24,7 @@ public class CustomHashTableTest {
 	
 	@Test
 	public void testResize() {
-		CustomHashTable cht = new CustomHashTable(5);
+		CustomHashTable cht = new CustomHashTable(5, 0.6);
 		cht.put("apple", "1");
 		cht.put("orange", "2");
 		cht.put("green", "3");
