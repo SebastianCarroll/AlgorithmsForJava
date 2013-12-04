@@ -25,4 +25,9 @@ public class Node {
     public Boolean isEmpty(){
     	return key == null && value == null;
     }
+    
+    public void empty(){
+    	key = null;
+    	value = null;
+    }
 }
