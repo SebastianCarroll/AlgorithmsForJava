@@ -92,7 +92,7 @@ public class ProbedHashTable implements MapBase {
     
     private Integer findMatchingNodeIndex(String key){
     	int index = getIndex(key);
-    	int startIndex = index;
+    	int slotsConsidered = 0;
 		Node position = elements[index];
 		
 		if(position == null){
@@ -102,10 +102,10 @@ public class ProbedHashTable implements MapBase {
 		while(position.key != key){
 			index = getNextIndex(index);
 			position = elements[index];
-			if(index == startIndex || position == null){
+			if(slotsConsidered > elements.length || position == null){
 				return null;
 			}
-		} 
+		}
 		return index;
     }
     
