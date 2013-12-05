@@ -2,6 +2,11 @@ package linkedList;
 
 import base.Node;
 
+/**
+ * Singly Linked List implementation that stores key,value pairs of strings
+ * @author sjc
+ *
+ */
 public class LList {
 	
 	private String key;
@@ -45,6 +50,11 @@ public class LList {
 		}
 	}
 	
+	/**
+	 * Removes node from list which matches the key value provided
+	 * @param k - Key value to match
+	 * @return value of node removed or null if no node was found
+	 */
 	public String remove(String k){
 		if(next != null && next.next != null && next.key == key){
 			LList found = next;
@@ -81,12 +91,19 @@ public class LList {
 		return next.fetch(k);
 	}
 	
+	/**
+	 * Removes and returns first node in the list
+	 * @return First node in the list
+	 */
 	public Node pop(){
 		Node popped = new Node(key, value);
 		remove(key);
 		return popped;
 	}
 	
+	/**
+	 * Reverses the order of the nodes in the list
+	 */
 	public void reverse(){
 		LList head = new LList();
 		reverseList(this, head);
@@ -102,18 +119,20 @@ public class LList {
             return head.next;
         }
 		
+		// Without this cycles will be introduces
 		list.next = null;
 		
 		LList prevList = reverseList(nextList, head);
 		
-		LList listCopy = list.deepCopy();
+		prevList.next = list.deepCopy();
 		
-		prevList.next = listCopy;
-		
-		
-		return listCopy;
+		return prevList.next;
 	}
 	
+	/**
+	 * Converts List Structure to a string representation
+	 * @return String representation
+	 */
 	public String stringify() {
 		String toString = stringifyNode();
 		if(next == null){
@@ -122,10 +141,18 @@ public class LList {
 		return toString + next.stringify();
 	}
 	
+	/**
+	 * Creates a new List with the same values as this one
+	 * @return The cloned list
+	 */
 	public LList deepCopy(){
 		return new LList(key,value,next);
 	}
 	
+	/**
+	 * Make the current list look the same as the list supplied
+	 * @param toCopy - List which will be copied over to the current list
+	 */
 	public void update(LList toCopy){
 		key = toCopy.key;
 		value = toCopy.value;
