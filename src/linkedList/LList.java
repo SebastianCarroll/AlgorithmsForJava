@@ -87,15 +87,36 @@ public class LList {
 		return popped;
 	}
 	
-	public LList reverse(){
-		if(next == null || next.key == null){
-			return this;
+	public void reverse(){
+		reverseList(this);
+		//key = newHead.key;
+		//value = newHead.value;
+		//next = newHead.next;
+	}
+	
+	private LList reverseList(LList list){
+		LList nextList = list.next;
+		if(nextList == null || nextList.key == null){
+            // Youve reached the end of the list so
+            // make this the head.
+			key = list.key;
+			value = list.value;
+			next  = list.next;
+            return list;
+        }
+		
+		list.next = null;
+		
+		LList prevList = reverseList(nextList);
+		
+		if(prevList.key == key && prevList.value == value){
+			next = list;
 		}
 		
-		//LList reverse = next.reverse();
-		//head.next = this;
+		prevList.next = list;
 		
-		return this;
+		
+		return list;
 	}
 	
 	public String stringify() {

@@ -106,4 +106,18 @@ public class LListTest {
 				"(key2, value2)");
 	}	
 
+	@Test
+	public void testReverse() {
+		LList cll =  new LList();
+		cll.insert("key5", "value5");
+		cll.insert("key4", "value4");
+		cll.insert("key3", "value3");
+		cll.insert("key2", "value2");
+		cll.insert("key1", "value1");
+		
+		cll.reverse();
+		assertEquals("Reversing llist", 
+				cll.stringify(), 
+				"(key5, value5)(key4, value4)(key3, value3)(key2, value2)(key1, value1)");
+	}
 }
