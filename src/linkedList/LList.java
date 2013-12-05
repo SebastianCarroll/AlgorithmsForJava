@@ -88,35 +88,30 @@ public class LList {
 	}
 	
 	public void reverse(){
-		reverseList(this);
-		//key = newHead.key;
-		//value = newHead.value;
-		//next = newHead.next;
+		LList head = new LList();
+		reverseList(this, head);
+		this.update(head.next);
 	}
 	
-	private LList reverseList(LList list){
+	private LList reverseList(LList list, LList head){
 		LList nextList = list.next;
 		if(nextList == null || nextList.key == null){
             // Youve reached the end of the list so
             // make this the head.
-			key = list.key;
-			value = list.value;
-			next  = list.next;
-            return list;
+			head.next = list.deepCopy();
+            return head.next;
         }
 		
 		list.next = null;
 		
-		LList prevList = reverseList(nextList);
+		LList prevList = reverseList(nextList, head);
 		
-		if(prevList.key == key && prevList.value == value){
-			next = list;
-		}
+		LList listCopy = list.deepCopy();
 		
-		prevList.next = list;
+		prevList.next = listCopy;
 		
 		
-		return list;
+		return listCopy;
 	}
 	
 	public String stringify() {
@@ -125,6 +120,16 @@ public class LList {
 			return toString;
 		}
 		return toString + next.stringify();
+	}
+	
+	public LList deepCopy(){
+		return new LList(key,value,next);
+	}
+	
+	public void update(LList toCopy){
+		key = toCopy.key;
+		value = toCopy.value;
+		next = toCopy.next;
 	}
 	
 	private String stringifyNode(){
