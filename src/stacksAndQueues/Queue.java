@@ -33,6 +33,10 @@ public class Queue<E> {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param element
+	 */
 	public void enqueue(E element){
 		elements[head] = element;
 		head++;
