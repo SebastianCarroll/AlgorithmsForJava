@@ -34,7 +34,7 @@ public class Queue<E> {
 	}
 	
 	/**
-	 * 
+	 * Add an element to the queue
 	 * @param element
 	 */
 	public void enqueue(E element){
