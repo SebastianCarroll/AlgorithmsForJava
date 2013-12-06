@@ -1,15 +1,15 @@
 package sorting;
 
-import java.lang.Comparable;
+//import java.lang.Comparable;
 
-public class ArraySorter {
+public class QuickSort {
 	// Method that uses generics instead
 //	public <E extends Comparable<E>> void quicksort(E[] array){
 //		
 //	}
 	
 	// Standard String compare method
-	public void quicksort(String[] array){
+	public void sort(String[] array){
 		quicksortSubArray(array, 0, array.length-1);
 	}
 	
@@ -35,8 +35,8 @@ public class ArraySorter {
 		return i+1;
 	}
 	
-	private void exchange(String[] array, int i, int j){
-		String tmp = array[i];
+	private <E> void exchange(E[] array, int i, int j){
+		E tmp = array[i];
 		array[i] = array[j];
 		array[j] = tmp;
 	}

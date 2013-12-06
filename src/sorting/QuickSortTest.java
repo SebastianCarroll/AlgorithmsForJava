@@ -4,15 +4,15 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class ArraySorterTest {
+public class QuickSortTest {
 
 	@Test
 	public void testQuicksort() {
 		String[] TestArray = new String[]{"Bat", "Turtle", "Ranch", "Ant"};
 		String[] ExpectedSorted = new String[]{"Ant", "Bat", "Ranch", "Turtle"};
 		
-		ArraySorter as = new ArraySorter();
-		as.quicksort(TestArray);
+		QuickSort as = new QuickSort();
+		as.sort(TestArray);
 		
 		assertArrayEquals(TestArray, ExpectedSorted);
 	}
@@ -22,8 +22,8 @@ public class ArraySorterTest {
 		String[] TestArray = new String[]{"Bat", "Ranch"};
 		String[] ExpectedSorted = new String[]{"Bat", "Ranch"};
 		
-		ArraySorter as = new ArraySorter();
-		as.quicksort(TestArray);
+		QuickSort as = new QuickSort();
+		as.sort(TestArray);
 		
 		assertArrayEquals(TestArray, ExpectedSorted);
 	}
@@ -33,8 +33,8 @@ public class ArraySorterTest {
 		String[] TestArray = new String[]{"Ranch", "Bat"};
 		String[] ExpectedSorted = new String[]{"Bat", "Ranch"};
 		
-		ArraySorter as = new ArraySorter();
-		as.quicksort(TestArray);
+		QuickSort as = new QuickSort();
+		as.sort(TestArray);
 		
 		assertArrayEquals(TestArray, ExpectedSorted);
 	}
@@ -44,8 +44,8 @@ public class ArraySorterTest {
 		String[] TestArray = new String[]{"Bat"};
 		String[] ExpectedSorted = new String[]{"Bat"};
 		
-		ArraySorter as = new ArraySorter();
-		as.quicksort(TestArray);
+		QuickSort as = new QuickSort();
+		as.sort(TestArray);
 		
 		assertArrayEquals(TestArray, ExpectedSorted);
 	}
