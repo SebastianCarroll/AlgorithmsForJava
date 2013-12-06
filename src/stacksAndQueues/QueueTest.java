@@ -85,4 +85,19 @@ public class QueueTest {
 		assertFalse(q.dequeue());
 		assertFalse(q.dequeue());
 	}
+	
+	@Test
+	public void testWrapping() {
+		Queue<Integer> q = new Queue<Integer>(3);
+		q.enqueue(1);
+		q.enqueue(2);
+		assertTrue(q.dequeue() == 1);
+		q.enqueue(3);
+		assertTrue(q.dequeue() == 2);
+		q.enqueue(4);
+		assertTrue(q.dequeue() == 3);
+		q.enqueue(4);
+		assertTrue(q.dequeue() == 4);
+		assertTrue(q.dequeue() == 4);
+	}
 }
