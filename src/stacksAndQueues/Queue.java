@@ -7,7 +7,7 @@ public class Queue<E> {
 	
 	@SuppressWarnings("unchecked")
 	public Queue(int initialSize){
-		elements = (E[]) new Object[initialSize];
+		elements = (E[]) new Object[initialSize+1];
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -20,13 +20,13 @@ public class Queue<E> {
 	}
 	
 	public Boolean isFull(){
-		return isHeadOneLessThanTail();
+		return isHeadOneMoreThanTail();
 	}
 	
-	private Boolean isHeadOneLessThanTail(){
-		if(tail - 1 == head){
+	private Boolean isHeadOneMoreThanTail(){
+		if(tail + 1 == head){
 			return true;
-		}else if(tail == 0 && head == elements.length){
+		}else if(head == 0 && tail == elements.length-1){
 			return true;
 		} else {
 			return false;
@@ -38,13 +38,40 @@ public class Queue<E> {
 	 * @param element
 	 */
 	public void enqueue(E element){
-		elements[head] = element;
-		head++;
+		if(isFull()){
+			increaseCapacity();
+		}
+		elements[tail] = element;
+		tail = incrementOrWrap(tail);
 	}
 	
 	public E dequeue(){
-		E element = elements[tail];
-		tail++;
+		if(isEmpty()){
+			return null;
+		}
+		E element = elements[head];
+		head = incrementOrWrap(head);
 		return element;
+	}
+	
+	private int incrementOrWrap(int position){
+		if(position == elements.length-1){
+			return 0;
+		} else {
+			return position + 1;
+		}
+	}
+	
+	private void increaseCapacity(){
+		Queue<E> largerCapacity = new Queue<E>(elements.length*2);
+		int oldHead = head;
+		int oldTail = tail;
+		while(!isEmpty()){
+			E element = dequeue();
+			largerCapacity.enqueue(element);
+		}
+		head = oldHead;
+		tail = oldTail;
+		elements = largerCapacity.elements;
 	}
 }
