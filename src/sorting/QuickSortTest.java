@@ -11,8 +11,7 @@ public class QuickSortTest {
 		String[] TestArray = new String[]{"Bat", "Turtle", "Ranch", "Ant"};
 		String[] ExpectedSorted = new String[]{"Ant", "Bat", "Ranch", "Turtle"};
 		
-		QuickSort as = new QuickSort();
-		as.sort(TestArray);
+		QuickSort.sort(TestArray);
 		
 		assertArrayEquals(TestArray, ExpectedSorted);
 	}
@@ -22,8 +21,7 @@ public class QuickSortTest {
 		String[] TestArray = new String[]{"Bat", "Ranch"};
 		String[] ExpectedSorted = new String[]{"Bat", "Ranch"};
 		
-		QuickSort as = new QuickSort();
-		as.sort(TestArray);
+		QuickSort.sort(TestArray);
 		
 		assertArrayEquals(TestArray, ExpectedSorted);
 	}
@@ -33,8 +31,7 @@ public class QuickSortTest {
 		String[] TestArray = new String[]{"Ranch", "Bat"};
 		String[] ExpectedSorted = new String[]{"Bat", "Ranch"};
 		
-		QuickSort as = new QuickSort();
-		as.sort(TestArray);
+		QuickSort.sort(TestArray);
 		
 		assertArrayEquals(TestArray, ExpectedSorted);
 	}
@@ -44,8 +41,7 @@ public class QuickSortTest {
 		String[] TestArray = new String[]{"Bat"};
 		String[] ExpectedSorted = new String[]{"Bat"};
 		
-		QuickSort as = new QuickSort();
-		as.sort(TestArray);
+		QuickSort.sort(TestArray);
 		
 		assertArrayEquals(TestArray, ExpectedSorted);
 	}

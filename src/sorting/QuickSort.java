@@ -9,11 +9,11 @@ public class QuickSort {
 //	}
 	
 	// Standard String compare method
-	public void sort(String[] array){
+	public static void sort(String[] array){
 		quicksortSubArray(array, 0, array.length-1);
 	}
 	
-	private void quicksortSubArray(String[] array, int start, int end){
+	private  static void quicksortSubArray(String[] array, int start, int end){
 		if(start < end){
 			int middle = partition(array, start, end);
 			quicksortSubArray(array, start, middle-1);
@@ -21,7 +21,7 @@ public class QuickSort {
 		}
 	}
 	
-	private int partition(String[] array, int start, int end){
+	private static  int partition(String[] array, int start, int end){
 		String endElement = array[end];
 		int i = start -1;
 		// Use <= so that array[end-1] is also considered
@@ -35,7 +35,7 @@ public class QuickSort {
 		return i+1;
 	}
 	
-	private <E> void exchange(E[] array, int i, int j){
+	private static <E> void exchange(E[] array, int i, int j){
 		E tmp = array[i];
 		array[i] = array[j];
 		array[j] = tmp;
