@@ -24,7 +24,8 @@ public class ArraySorter {
 	private int partition(String[] array, int start, int end){
 		String endElement = array[end];
 		int i = start -1;
-		for(int j=start; j<end-1; j++){
+		// Use <= so that array[end-1] is also considered
+		for(int j=start; j<=end-1; j++){
 			if(array[j].compareTo(endElement) <= 0){
 				i++;
 				exchange(array, i,j);
