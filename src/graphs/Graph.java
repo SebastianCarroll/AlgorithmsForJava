@@ -3,17 +3,18 @@ package graphs;
 import base.Colour;
 
 public class Graph {
-	GraphNode[][] matrixGraph;
-	StartNode startnode;
+	GraphNode[] nodes;
+	Integer[][] edges;
+	Integer startnode;
 	
-	public Graph(Integer[][] input, StartNode sn){
-		mapIntegersToNodes(input);
+	public Graph(Integer[][] inputEdges, Integer sn){
+		mapIntegersToNodes(inputEdges);
 		initialiseStartNode(sn);
 	}
 	
-	private void initialiseStartNode(StartNode sn){
+	private void initialiseStartNode(Integer sn){
 		startnode = sn;
-		GraphNode start = matrixGraph[sn.row][sn.col];
+		GraphNode start = nodes[startnode];
 		start.colour = Colour.GREY;
 		start.d = 0;
 	}
@@ -23,18 +24,27 @@ public class Graph {
 			Integer[] row = input[i];
 			for(int j=0; j<row.length; j++){
 				if(graphIsntInitialised()){
-					initialiseGraph(row.length, input.length);
+					failIfMatrixIsntSquare(input.length, row.length);
+					initialiseGraph(input.length);
 				}
-				matrixGraph[i][j] = new GraphNode(input[i][j]);
+				nodes[i] = new GraphNode();
 			}
 		}
 	}
 	
 	private Boolean graphIsntInitialised(){
-		return matrixGraph == null;
+		return nodes == null;
 	}
 	
-	private void initialiseGraph(int rows, int cols){
-		matrixGraph = new GraphNode[rows][cols];
+	private void failIfMatrixIsntSquare(int rows, int cols) throws IllegalArgumentException {
+		if(rows != cols){
+			throw new IllegalArgumentException(
+					"When a graph is represented as an adjacency matrix that matrix must be square"
+					);
+		}
+	}
+	
+	private void initialiseGraph(int rows){
+		nodes = new GraphNode[rows];
 	}
 }
