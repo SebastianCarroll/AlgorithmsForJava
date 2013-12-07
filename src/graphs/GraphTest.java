@@ -17,16 +17,31 @@ public class GraphTest {
 				{0,0,1,0}
 		};
 		Graph G = new Graph(graph);
-		GraphNode[][] input = G.matrixGraph;
+		GraphNode[] input = G.nodes;
+		
 		for(int i=0; i<input.length; i++){
-			GraphNode[] row = input[i];
-			for(int j=0; j<row.length; j++){
-				GraphNode curnode = input[i][j];
-				assertEquals(curnode.value, graph[i][j]);
-				assertNotNull(curnode.d);
-				assertEquals(curnode.colour, Colour.WHITE);
-			}
+			GraphNode curnode = input[i];
+			assertNotNull(curnode.d);
+			assertNull(curnode.parent);
+			assertEquals(curnode.colour, Colour.WHITE);
 		}
+	}
+	
+	@Test
+	public void checkStartNodeInitialised() {
+		Integer[][] graph = new Integer[][]{
+				{0,1,0,0},
+				{0,0,0,1},
+				{0,1,0,0},
+				{0,0,1,0}
+		};
+		Graph G = new Graph(graph);
+		
+		G.BFS(0);
+		GraphNode start = G.nodes[0];
+		assertEquals(start.colour, Colour.GREY);
+		assertNull(start.parent);
+		assertEquals(start.d, new Integer(0));
 	}
 
 }
