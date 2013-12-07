@@ -26,18 +26,29 @@ public class BFS {
 		Q.enqueue(nodes[start]);
 		while(!Q.isEmpty()){
 			GraphNode current = Q.dequeue();
-			searchAdjacent(current);
+			searchAdjacentAndAddToQueue(current, Q);
 		}
 	}
 	
-	private void searchAdjacent(GraphNode current){
+	private void searchAdjacentAndAddToQueue(GraphNode current, Queue<GraphNode> Q){
 		ArrayList<GraphNode> adj = getAdjacent(current);
-		exploreNodes(adj);
+		exploreNodes(adj, current, Q);
 		current.colour = Colour.BLACK;
 	}
 	
-	private void exploreNodes(ArrayList<GraphNode> adj){
-		// TODO: Implement this
+	private void exploreNodes(ArrayList<GraphNode> adj, GraphNode parent, Queue<GraphNode> Q){
+		for(GraphNode current : adj){
+			if(current.colour == Colour.WHITE){
+				visitNode(current, parent);
+				Q.enqueue(current);
+			}
+		}
+	}
+	
+	private void visitNode(GraphNode current, GraphNode parent){
+		current.colour = Colour.GREY;
+		current.d = parent.d +1;
+		current.parent = parent;		
 	}
 	
 	private ArrayList<GraphNode> getAdjacent(GraphNode current){
