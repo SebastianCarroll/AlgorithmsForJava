@@ -43,9 +43,10 @@ public class BFS {
 	private ArrayList<GraphNode> getAdjacent(GraphNode current){
 		ArrayList<GraphNode> adj = new ArrayList<GraphNode>();
 		Integer[] edgesFromCurrent = edges[current.value];
-		for(Integer edge : edgesFromCurrent){
+		for(int i=0; i<edgesFromCurrent.length; i++){
+			Integer edge = edgesFromCurrent[i];
 			if(edge == 1){
-				adj.add(nodes[edge]);
+				adj.add(nodes[i]);
 			}
 		}
 		return adj;
