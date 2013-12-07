@@ -10,11 +10,8 @@ public class GraphNode {
 	
 	public GraphNode(Integer v){
 		value = v;
+		colour = Colour.WHITE;
+		d = Integer.MAX_VALUE;
 		parent = null;
-	}
-	
-	public GraphNode(Integer v, GraphNode p){
-		value = v;
-		parent = p;
 	}
 }
