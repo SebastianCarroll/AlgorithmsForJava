@@ -1,8 +1,9 @@
 package graphs;
 
 public class Graph {
-	Integer[][] matrixGraph;
+	GraphNode[][] matrixGraph;
 	public Graph(Integer[][] input){
-		matrixGraph = input;
+		// Map Integer[][] -> GraphNode[][]
+		//matrixGraph = input;
 	}
 }
