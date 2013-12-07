@@ -1,22 +1,17 @@
 package graphs;
 
-import base.Colour;
-
 public class Graph {
 	GraphNode[] nodes;
 	Integer[][] edges;
-	Integer startnode;
 	
-	public Graph(Integer[][] inputEdges, Integer sn){
+	public Graph(Integer[][] inputEdges){
+		checkEdgesAreValid(inputEdges);
 		mapIntegersToNodes(inputEdges);
-		initialiseStartNode(sn);
 	}
 	
-	private void initialiseStartNode(Integer sn){
-		startnode = sn;
-		GraphNode start = nodes[startnode];
-		start.colour = Colour.GREY;
-		start.d = 0;
+	public void BFS(Integer start){
+		BFS bfs = new BFS(nodes, edges, start);
+		bfs.search();
 	}
 	
 	private void mapIntegersToNodes(Integer[][] input){
@@ -24,7 +19,6 @@ public class Graph {
 			Integer[] row = input[i];
 			for(int j=0; j<row.length; j++){
 				if(graphIsntInitialised()){
-					failIfMatrixIsntSquare(input.length, row.length);
 					initialiseGraph(input.length);
 				}
 				nodes[i] = new GraphNode();
@@ -36,11 +30,24 @@ public class Graph {
 		return nodes == null;
 	}
 	
-	private void failIfMatrixIsntSquare(int rows, int cols) throws IllegalArgumentException {
-		if(rows != cols){
-			throw new IllegalArgumentException(
-					"When a graph is represented as an adjacency matrix that matrix must be square"
-					);
+	private void checkEdgesAreValid(Integer[][] inputEdges)
+			throws IllegalArgumentException {
+		if(inputEdges == null){
+			throw new IllegalArgumentException("Edges graph must be initialised");
+		}
+		Integer rows = inputEdges.length;
+		if(rows == 0){
+			throw new IllegalArgumentException("Graph contains no edges");
+		}
+		
+		// Loop through as Java allows each row to be a different size
+		for(int i=0; i<inputEdges.length; i++){
+			Integer[] row = inputEdges[i];
+			if(row.length != inputEdges.length){
+				throw new IllegalArgumentException(
+						"When a graph is represented as an adjacency matrix that matrix must be square"
+						);
+			}
 		}
 	}
 	
