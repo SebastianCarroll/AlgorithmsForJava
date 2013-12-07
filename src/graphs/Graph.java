@@ -16,13 +16,10 @@ public class Graph {
 	
 	private void mapIntegersToNodes(Integer[][] input){
 		for(int i=0; i<input.length; i++){
-			Integer[] row = input[i];
-			for(int j=0; j<row.length; j++){
-				if(graphIsntInitialised()){
-					initialiseGraph(input.length);
-				}
-				nodes[i] = new GraphNode();
+			if(graphIsntInitialised()){
+				initialiseGraph(input.length);
 			}
+			nodes[i] = new GraphNode(i);
 		}
 	}
 	
