@@ -3,8 +3,6 @@ package graphs;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-import sorting.MergeSort;
 import base.Colour;
 
 public class GraphTest {
