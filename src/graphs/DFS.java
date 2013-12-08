@@ -16,12 +16,22 @@ public class DFS extends Search{
 	}
 
 	public GraphNode[] search(){
+		searchFromRoot();
+		searchRemaining();
+
+		return nodes;
+	}
+	
+	private void searchFromRoot(){
+		DFSVisit(nodes[start]);
+	}
+	
+	private void searchRemaining(){
 		for(GraphNode node : nodes){
 			if(node.colour == Colour.WHITE){
 				DFSVisit(node);
 			}
 		}
-		return nodes;
 	}
 	
 	private void DFSVisit(GraphNode node){
@@ -34,7 +44,7 @@ public class DFS extends Search{
 	private void exploreNeighbours(GraphNode node){
 		ArrayList<GraphNode> adj = getAdjacent(node);
 		for(GraphNode neighbour: adj){
-			if(node.undiscovered()){
+			if(neighbour.undiscovered()){
 				explore(neighbour, node);
 			}
 		}
