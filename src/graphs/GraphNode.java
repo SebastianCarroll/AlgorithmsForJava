@@ -20,4 +20,8 @@ public class GraphNode {
 	public Boolean undiscovered(){
 		return colour == Colour.WHITE;
 	}
+	
+	public String stringify(){
+		return "(" + value + ")";
+	}
 }
