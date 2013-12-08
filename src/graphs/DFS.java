@@ -34,14 +34,14 @@ public class DFS extends Search{
 		}
 	}
 	
-	private void DFSVisit(GraphNode node){
+	protected void DFSVisit(GraphNode node){
 		time++;
 		markDiscovered(node);
 		exploreNeighbours(node);
 		markExplored(node);
 	}
 	
-	private void exploreNeighbours(GraphNode node){
+	protected void exploreNeighbours(GraphNode node){
 		ArrayList<GraphNode> adj = getAdjacent(node);
 		for(GraphNode neighbour: adj){
 			if(neighbour.undiscovered()){
@@ -50,7 +50,7 @@ public class DFS extends Search{
 		}
 	}
 	
-	private void markExplored(GraphNode node){
+	protected void markExplored(GraphNode node){
 		node.colour = Colour.BLACK;
 		time++;
 		node.f = time;
@@ -61,7 +61,7 @@ public class DFS extends Search{
 		DFSVisit(node);
 	}
 	
-	private void markDiscovered(GraphNode node){
+	protected void markDiscovered(GraphNode node){
 		node.d= time;
 		node.colour = Colour.GREY;
 	}
