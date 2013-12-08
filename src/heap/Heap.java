@@ -3,13 +3,25 @@ package heap;
 import java.util.ArrayList;
 
 public class Heap<E extends Comparable<E>> {
-	ArrayList<E> heap = new ArrayList<E>();
-	Integer heapsize = 0;
+	public ArrayList<E> heap = new ArrayList<E>();
+	public Integer heapsize = 0;
 	
 	public Heap(ArrayList<E> initialElements){
 		heap = initialElements;
 		heapsize = initialElements.size();
 		buildMaxHeap();
+	}
+	
+	public Heap(E[] initialElements){
+		heapsize = initialElements.length;
+		mapToArrayList(initialElements);
+		buildMaxHeap();
+	}
+	
+	private void mapToArrayList(E[] initialElements){
+		for(E elem : initialElements){
+			heap.add(elem);
+		}
 	}
 	
 	private void buildMaxHeap(){
@@ -18,7 +30,7 @@ public class Heap<E extends Comparable<E>> {
 		}
 	}
 	
-	private void maxHeapify(Integer root){
+	public void maxHeapify(Integer root){
 		Integer l = left(root);
 		Integer r = right(root);
 		
@@ -31,7 +43,7 @@ public class Heap<E extends Comparable<E>> {
 	}
 	
 	// Use -1 to account for mandatory 1th indexed heap
-	private void exchange(Integer l, Integer r){
+	public void exchange(Integer l, Integer r){
 		E left = heap.get(l-1);
 		E right = heap.get(r-1);
 		
