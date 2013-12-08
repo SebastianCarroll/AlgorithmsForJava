@@ -28,7 +28,7 @@ public class GraphTest {
 	}
 	
 	@Test
-	public void checkStartNodeInitialised() {
+	public void checkBFS() {
 		Integer[][] graph = new Integer[][]{
 				{0,1,0,0},
 				{0,0,0,1},
@@ -37,11 +37,58 @@ public class GraphTest {
 		};
 		Graph G = new Graph(graph);
 		
-		G.BFS(0);
-		GraphNode start = G.nodes[0];
-		assertEquals(start.colour, Colour.GREY);
-		assertNull(start.parent);
-		assertEquals(start.d, new Integer(0));
+        GraphNode[] nodes = G.BFS(0);
+        assertEquals(nodes[0].parent, null);
+        assertEquals(nodes[1].parent.value, new Integer(0));
+        assertEquals(nodes[2].parent.value, new Integer(3));
+        assertEquals(nodes[3].parent.value, new Integer(1));
+	}
+	
+	@Test
+	public void checkBFS_SelfPointingNode() {
+		Integer[][] graph = new Integer[][]{
+				{0,1,0,0},
+				{0,1,0,1},
+				{0,1,1,0},
+				{0,0,1,0}
+		};
+		Graph G = new Graph(graph);
+		
+        GraphNode[] nodes = G.BFS(0);
+        assertEquals(nodes[0].parent, null);
+        assertEquals(nodes[1].parent.value, new Integer(0));
+        assertEquals(nodes[2].parent.value, new Integer(3));
+        assertEquals(nodes[3].parent.value, new Integer(1));
+	}
+	
+	@Test
+	public void checkBFS_UnreachableNode() {
+		Integer[][] graph = new Integer[][]{
+				{0,1,0,0},
+				{0,1,0,1},
+				{0,1,1,0},
+				{0,0,1,0}
+		};
+		Graph G = new Graph(graph);
+		
+        GraphNode[] nodes = G.BFS(1);
+        assertNull(nodes[0].parent);
+        assertEquals(nodes[0].colour, Colour.WHITE);
+        assertNull(nodes[1].parent);
+        assertEquals(nodes[2].parent.value, new Integer(3));
+        assertEquals(nodes[3].parent.value, new Integer(1));
+	}
+	
+	@Test
+	public void checkBFS_SingleNode() {
+		Integer[][] graph = new Integer[][]{
+				{1}
+		};
+		Graph G = new Graph(graph);
+		
+        GraphNode[] nodes = G.BFS(1);
+        assertNull(nodes[0].parent);
+        assertEquals(nodes[0].colour, Colour.BLACK);
 	}
 
 }
