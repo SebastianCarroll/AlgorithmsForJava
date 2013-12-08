@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import sorting.MergeSort;
 import base.Colour;
 
 public class GraphTest {
@@ -86,9 +87,26 @@ public class GraphTest {
 		};
 		Graph G = new Graph(graph);
 		
-        GraphNode[] nodes = G.BFS(1);
+        GraphNode[] nodes = G.BFS(0);
         assertNull(nodes[0].parent);
         assertEquals(nodes[0].colour, Colour.BLACK);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void checkBFS_InvalidInput() {
+		Integer[][] graph = new Integer[][]{
+				{1, 0, 0}
+		};
+		new Graph(graph);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void checkBFS_StartNodeOutOfBounds() {
+		Integer[][] graph = new Integer[][]{
+				{1}
+		};
+		Graph G = new Graph(graph);
+		G.BFS(1);
 	}
 
 }
