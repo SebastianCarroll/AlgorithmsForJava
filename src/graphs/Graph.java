@@ -20,6 +20,12 @@ public class Graph {
 		return dfs.search();
 	}
 	
+	public String traverse(Integer start, TraversalOrder order){
+		DFSTraverse dfst = new DFSTraverse(nodes, edges, start, order);
+		dfst.search();
+		return dfst.getTraversal();
+	}
+	
 	private void mapIntegersToNodes(){
 		for(int i=0; i<edges.length; i++){
 			if(graphIsntInitialised()){
