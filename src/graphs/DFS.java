@@ -1,7 +1,6 @@
 package graphs;
 
 import base.Colour;
-import stacksAndQueues.Queue;
 import java.util.ArrayList;
 
 /**
@@ -10,46 +9,50 @@ import java.util.ArrayList;
  *
  */
 public class DFS extends Search{
-
+	Integer time = 0;
+	
 	public DFS (GraphNode[] ns, Integer[][] es, Integer sn) {
 		super(ns, es, sn);
 	}
 
 	public GraphNode[] search(){
-		initialiseStartNode();
-		Queue<GraphNode> Q = new Queue<GraphNode>(nodes.length);
-		Q.enqueue(nodes[start]);
-		while(!Q.isEmpty()){
-			GraphNode current = Q.dequeue();
-			searchAdjacentAndAddToQueue(current, Q);
+		for(GraphNode node : nodes){
+			if(node.colour == Colour.WHITE){
+				DFSVisit(node);
+			}
 		}
 		return nodes;
 	}
 	
-	private void searchAdjacentAndAddToQueue(GraphNode current, Queue<GraphNode> Q){
-		ArrayList<GraphNode> adj = getAdjacent(current);
-		exploreNodes(adj, current, Q);
-		current.colour = Colour.BLACK;
+	private void DFSVisit(GraphNode node){
+		time++;
+		markDiscovered(node);
+		exploreNeighbours(node);
+		markExplored(node);
 	}
 	
-	private void exploreNodes(ArrayList<GraphNode> adj, GraphNode parent, Queue<GraphNode> Q){
-		for(GraphNode current : adj){
-			if(current.colour == Colour.WHITE){
-				visitNode(current, parent);
-				Q.enqueue(current);
+	private void exploreNeighbours(GraphNode node){
+		ArrayList<GraphNode> adj = getAdjacent(node);
+		for(GraphNode neighbour: adj){
+			if(node.undiscovered()){
+				explore(neighbour, node);
 			}
 		}
 	}
 	
-	private void visitNode(GraphNode current, GraphNode parent){
-		current.colour = Colour.GREY;
-		current.d = parent.d +1;
-		current.parent = parent;		
+	private void markExplored(GraphNode node){
+		node.colour = Colour.BLACK;
+		time++;
+		node.f = time;
 	}
 	
-	private void initialiseStartNode(){
-		GraphNode startnode = nodes[start];
-		startnode.colour = Colour.GREY;
-		startnode.d = 0;
+	private void explore(GraphNode node, GraphNode parent){
+		node.parent = parent;
+		DFSVisit(node);
+	}
+	
+	private void markDiscovered(GraphNode node){
+		node.d= time;
+		node.colour = Colour.GREY;
 	}
 }
