@@ -15,6 +15,11 @@ public class Graph {
 		return bfs.search();
 	}
 	
+	public GraphNode[] DFS(Integer start){
+		DFS dfs = new DFS(nodes, edges, start);
+		return dfs.search();
+	}
+	
 	private void mapIntegersToNodes(){
 		for(int i=0; i<edges.length; i++){
 			if(graphIsntInitialised()){
