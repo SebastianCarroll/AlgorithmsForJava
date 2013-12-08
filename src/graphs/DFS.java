@@ -47,18 +47,6 @@ public class DFS extends Search{
 		current.parent = parent;		
 	}
 	
-	private ArrayList<GraphNode> getAdjacent(GraphNode current){
-		ArrayList<GraphNode> adj = new ArrayList<GraphNode>();
-		Integer[] edgesFromCurrent = edges[current.value];
-		for(int i=0; i<edgesFromCurrent.length; i++){
-			Integer edge = edgesFromCurrent[i];
-			if(edge == 1){
-				adj.add(nodes[i]);
-			}
-		}
-		return adj;
-	}
-	
 	private void initialiseStartNode(){
 		GraphNode startnode = nodes[start];
 		startnode.colour = Colour.GREY;

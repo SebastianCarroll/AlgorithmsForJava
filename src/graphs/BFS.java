@@ -9,24 +9,10 @@ import java.util.ArrayList;
  * @author sjc
  *
  */
-public class BFS {
-	GraphNode[] nodes;
-	Integer[][] edges;
-	Integer start;
+public class BFS extends Search {
 	
 	public BFS (GraphNode[] ns, Integer[][] es, Integer sn) {
-		nodes = ns;
-		edges = es;
-		start = sn;
-		checkNodesContainsStartNode();
-	}
-	
-	private void checkNodesContainsStartNode() 
-			throws IllegalArgumentException{
-		if(start >= nodes.length){
-			throw new IllegalArgumentException(
-					"Specified Start node is not in available nodes");
-		}
+		super(ns, es, sn);
 	}
 	
 	public GraphNode[] search(){
@@ -59,18 +45,6 @@ public class BFS {
 		current.colour = Colour.GREY;
 		current.d = parent.d +1;
 		current.parent = parent;		
-	}
-	
-	private ArrayList<GraphNode> getAdjacent(GraphNode current){
-		ArrayList<GraphNode> adj = new ArrayList<GraphNode>();
-		Integer[] edgesFromCurrent = edges[current.value];
-		for(int i=0; i<edgesFromCurrent.length; i++){
-			Integer edge = edgesFromCurrent[i];
-			if(edge == 1){
-				adj.add(nodes[i]);
-			}
-		}
-		return adj;
 	}
 	
 	private void initialiseStartNode(){
