@@ -18,6 +18,15 @@ public class BFS {
 		nodes = ns;
 		edges = es;
 		start = sn;
+		checkNodesContainsStartNode();
+	}
+	
+	private void checkNodesContainsStartNode() 
+			throws IllegalArgumentException{
+		if(start >= nodes.length){
+			throw new IllegalArgumentException(
+					"Specified Start node is not in available nodes");
+		}
 	}
 	
 	public GraphNode[] search(){
