@@ -20,7 +20,7 @@ public class BFS {
 		start = sn;
 	}
 	
-	public void search(){
+	public GraphNode[] search(){
 		initialiseStartNode();
 		Queue<GraphNode> Q = new Queue<GraphNode>(nodes.length);
 		Q.enqueue(nodes[start]);
@@ -28,6 +28,7 @@ public class BFS {
 			GraphNode current = Q.dequeue();
 			searchAdjacentAndAddToQueue(current, Q);
 		}
+		return nodes;
 	}
 	
 	private void searchAdjacentAndAddToQueue(GraphNode current, Queue<GraphNode> Q){
