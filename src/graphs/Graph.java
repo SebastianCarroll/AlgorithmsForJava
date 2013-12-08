@@ -6,18 +6,19 @@ public class Graph {
 	
 	public Graph(Integer[][] inputEdges){
 		checkEdgesAreValid(inputEdges);
-		mapIntegersToNodes(inputEdges);
+		edges = inputEdges;
+		mapIntegersToNodes();
 	}
 	
-	public void BFS(Integer start){
+	public GraphNode[] BFS(Integer start){
 		BFS bfs = new BFS(nodes, edges, start);
-		bfs.search();
+		return bfs.search();
 	}
 	
-	private void mapIntegersToNodes(Integer[][] input){
-		for(int i=0; i<input.length; i++){
+	private void mapIntegersToNodes(){
+		for(int i=0; i<edges.length; i++){
 			if(graphIsntInitialised()){
-				initialiseGraph(input.length);
+				initialiseGraph();
 			}
 			nodes[i] = new GraphNode(i);
 		}
@@ -48,7 +49,7 @@ public class Graph {
 		}
 	}
 	
-	private void initialiseGraph(int rows){
-		nodes = new GraphNode[rows];
+	private void initialiseGraph(){
+		nodes = new GraphNode[edges.length];
 	}
 }
