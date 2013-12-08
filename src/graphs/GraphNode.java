@@ -16,4 +16,8 @@ public class GraphNode {
 		f = Integer.MAX_VALUE;
 		parent = null;
 	}
+	
+	public Boolean undiscovered(){
+		return colour == Colour.WHITE;
+	}
 }
