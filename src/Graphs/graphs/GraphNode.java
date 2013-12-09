@@ -2,11 +2,12 @@ package Graphs.graphs;
 
 import Misc.base.Colour;
 
-public class GraphNode {
+public class GraphNode implements Comparable<GraphNode> {
 	Colour colour;
 	Integer d;
 	Integer f;
 	GraphNode parent;
+	Integer key;
 	Integer value;
 	
 	public GraphNode(Integer v){
@@ -23,5 +24,10 @@ public class GraphNode {
 	
 	public String stringify(){
 		return "(" + value + ")";
+	}
+
+	@Override
+	public int compareTo(GraphNode node) {
+		return value.compareTo(node.value);
 	}
 }
