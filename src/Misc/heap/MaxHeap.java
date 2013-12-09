@@ -17,6 +17,6 @@ public class MaxHeap<E extends Comparable<E>> extends Heap<E> {
 		// True if left < right
 		E left = heap.get(l-1);
 		E right = heap.get(r-1);
-		return left.compareTo(right) <= 0;
+		return left.compareTo(right) >= 0;
 	}
 }
