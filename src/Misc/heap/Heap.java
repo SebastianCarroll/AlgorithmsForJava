@@ -26,7 +26,19 @@ public abstract class Heap<E extends Comparable<E>> {
 	
 	// TODO: Fix this method
 	public void adjustKey(Integer index, E newElement){
-		if(!inOrder(newElement, getAt(index) ) ){
+		//if(index >= heapsize)
+		E oldElement = null;
+		
+		if(index < heap.size()){
+			oldElement = setAt(index, null);
+		} else {
+			heap.add(null);
+		}
+			
+		if(inOrder(newElement, getAt(index) ) ){
+			setAt(index, oldElement);
+		}
+		else{
 			setAt(index, newElement);
 			while(index > 1 && inOrder(getAt(parent(index)), getAt(index))){
 				exchange(index, parent(index));
@@ -94,8 +106,8 @@ public abstract class Heap<E extends Comparable<E>> {
 		return heap.get(index-1);
 	}
 	
-	protected void setAt(int index, E element){
-		heap.set(index-1, element);
+	protected E setAt(int index, E element){
+		return heap.set(index-1, element);
 	}
 	
 	// Use -1 to account for mandatory 1th indexed heap
