@@ -3,7 +3,7 @@ package Misc.sorting;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import heap.Heap;
+import Misc.heap.MaxHeap;
 
 public class HeapSortTest {
 
@@ -12,7 +12,7 @@ public class HeapSortTest {
 		String[] TestArray = new String[]{"Bat", "Turtle", "Ranch", "Ant"};
 		String[] ExpectedSorted = new String[]{"Ant", "Bat", "Ranch", "Turtle"};
 		
-		Heap<String> heap = HeapSort.sort(TestArray);
+		MaxHeap<String> heap = HeapSort.sort(TestArray);
 		
 		assertArrayEquals(heap.heap.toArray(), ExpectedSorted);
 	}
@@ -24,7 +24,7 @@ public class HeapSortTest {
 		
 		HeapSort.sort(TestArray);
 		
-		Heap<String> heap = HeapSort.sort(TestArray);
+		MaxHeap<String> heap = HeapSort.sort(TestArray);
 		
 		assertArrayEquals(heap.heap.toArray(), ExpectedSorted);
 	}
@@ -34,7 +34,7 @@ public class HeapSortTest {
 		String[] TestArray = new String[]{"Ranch", "Bat"};
 		String[] ExpectedSorted = new String[]{"Bat", "Ranch"};
 		
-		Heap<String> heap = HeapSort.sort(TestArray);
+		MaxHeap<String> heap = HeapSort.sort(TestArray);
 		
 		assertArrayEquals(heap.heap.toArray(), ExpectedSorted);
 	}
@@ -56,7 +56,7 @@ public class HeapSortTest {
 		Integer[] TestArray = new Integer[]{1, 34, 5, 99, 12};
 		Integer[] ExpectedSorted = new Integer[]{1, 5, 12, 34, 99};
 		
-		Heap<Integer> heap = HeapSort.sort(TestArray);
+		MaxHeap<Integer> heap = HeapSort.sort(TestArray);
 		
 		assertArrayEquals(heap.heap.toArray(), ExpectedSorted);
 	}

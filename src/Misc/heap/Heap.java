@@ -2,7 +2,7 @@ package Misc.heap;
 
 import java.util.ArrayList;
 
-public class Heap<E extends Comparable<E>> {
+public abstract class Heap<E extends Comparable<E>> {
 	public ArrayList<E> heap = new ArrayList<E>();
 	public Integer heapsize = 0;
 	
@@ -77,5 +77,5 @@ public class Heap<E extends Comparable<E>> {
 	}
 	
 	// Use -1 to account for mandatory 1th indexed heap
-	private abstract Boolean inOrder(Integer l, Integer r);
+	protected abstract Boolean inOrder(Integer l, Integer r);
 }
