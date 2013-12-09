@@ -1,4 +1,4 @@
-package graphs;
+package Graphs.graphs;
 
 public class DFSTraverse extends DFS {
 	

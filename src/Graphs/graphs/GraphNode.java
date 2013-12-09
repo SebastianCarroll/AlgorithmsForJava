@@ -1,6 +1,6 @@
-package graphs;
+package Graphs.graphs;
 
-import base.Colour;
+import Misc.base.Colour;
 
 public class GraphNode {
 	Colour colour;

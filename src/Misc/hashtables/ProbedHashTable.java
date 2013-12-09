@@ -1,6 +1,6 @@
-package hashtables;
+package Misc.hashtables;
 
-import base.*;
+import Misc.base.*;
 
 /**
  * Basic implementation of a HashTable which uses Linear Probing to resolve conflicts.

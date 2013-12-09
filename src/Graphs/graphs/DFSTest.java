@@ -1,7 +1,7 @@
-package graphs;
+package Graphs.graphs;
 
 import static org.junit.Assert.*;
-import base.Colour;
+import Misc.base.Colour;
 
 import org.junit.Test;
 

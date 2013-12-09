@@ -1,4 +1,4 @@
-package base;
+package Misc.base;
 
 public interface MapBase {
 	public void put(String key, String value);

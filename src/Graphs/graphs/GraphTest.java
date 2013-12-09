@@ -1,9 +1,9 @@
-package graphs;
+package Graphs.graphs;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import base.Colour;
+import Misc.base.Colour;
 
 public class GraphTest {
 

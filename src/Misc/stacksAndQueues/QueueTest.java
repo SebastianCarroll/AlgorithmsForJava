@@ -1,4 +1,4 @@
-package stacksAndQueues;
+package Misc.stacksAndQueues;
 
 import static org.junit.Assert.*;
 

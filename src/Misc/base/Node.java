@@ -1,4 +1,4 @@
-package base;
+package Misc.base;
 
 public class Node {
     public String key;

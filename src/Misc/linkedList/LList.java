@@ -1,6 +1,6 @@
-package linkedList;
+package Misc.linkedList;
 
-import base.Node;
+import Misc.base.Node;
 
 /**
  * Singly Linked List implementation that stores key,value pairs of strings

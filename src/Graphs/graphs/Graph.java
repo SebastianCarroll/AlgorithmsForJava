@@ -1,4 +1,4 @@
-package graphs;
+package Graphs.graphs;
 
 public class Graph {
 	GraphNode[] nodes;

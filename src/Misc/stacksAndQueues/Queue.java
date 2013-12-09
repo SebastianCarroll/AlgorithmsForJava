@@ -1,4 +1,4 @@
-package stacksAndQueues;
+package Misc.stacksAndQueues;
 
 public class Queue<E> {
 	E[] elements;

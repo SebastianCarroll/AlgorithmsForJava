@@ -1,4 +1,4 @@
-package sorting;
+package Misc.sorting;
 
 //import java.lang.Comparable;
 

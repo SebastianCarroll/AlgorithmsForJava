@@ -1,7 +1,7 @@
-package graphs;
+package Graphs.graphs;
 
-import base.Colour;
-import stacksAndQueues.Queue;
+import Misc.base.Colour;
+import Misc.stacksAndQueues.Queue;
 import java.util.ArrayList;
 
 /**

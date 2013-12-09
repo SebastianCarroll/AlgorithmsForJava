@@ -1,9 +1,9 @@
-package linkedList;
+package Misc.linkedList;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import base.Node;
+import Misc.base.Node;
 
 public class LListTest {
 

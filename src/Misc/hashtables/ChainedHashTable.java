@@ -1,8 +1,8 @@
-package hashtables;
+package Misc.hashtables;
 
-import base.MapBase;
-import base.Node;
-import linkedList.LList;
+import Misc.base.MapBase;
+import Misc.base.Node;
+import Misc.linkedList.LList;
 
 /**
  * Basic implementation of a HashTable.

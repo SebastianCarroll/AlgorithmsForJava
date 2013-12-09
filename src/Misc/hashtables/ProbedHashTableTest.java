@@ -1,4 +1,4 @@
-package hashtables;
+package Misc.hashtables;
 
 import static org.junit.Assert.*;
 

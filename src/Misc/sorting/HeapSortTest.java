@@ -1,4 +1,4 @@
-package sorting;
+package Misc.sorting;
 
 import static org.junit.Assert.*;
 
