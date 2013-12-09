@@ -9,13 +9,13 @@ public abstract class Heap<E extends Comparable<E>> {
 	public Heap(ArrayList<E> initialElements){
 		heap = initialElements;
 		heapsize = initialElements.size();
-		buildMaxHeap();
+		buildHeap();
 	}
 	
 	public Heap(E[] initialElements){
 		heapsize = initialElements.length;
 		mapToArrayList(initialElements);
-		buildMaxHeap();
+		buildHeap();
 	}
 	
 	private void mapToArrayList(E[] initialElements){
@@ -24,13 +24,13 @@ public abstract class Heap<E extends Comparable<E>> {
 		}
 	}
 	
-	private void buildMaxHeap(){
+	private void buildHeap(){
 		for(int i = heapsize/2; i > 0; i--){
-			maxHeapify(i);
+			heapify(i);
 		}
 	}
 	
-	public void maxHeapify(Integer root){
+	public void heapify(Integer root){
 		Integer l = left(root);
 		Integer r = right(root);
 		
@@ -38,7 +38,7 @@ public abstract class Heap<E extends Comparable<E>> {
 		
 		if(largest != root){
 			exchange(root, largest);
-			maxHeapify(largest);
+			heapify(largest);
 		}
 	}
 	
