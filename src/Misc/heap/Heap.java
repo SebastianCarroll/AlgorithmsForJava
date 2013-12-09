@@ -24,6 +24,12 @@ public abstract class Heap<E extends Comparable<E>> {
 		}
 	}
 	
+//	public void adjust-key(Integer index, E newElement){
+//		E current = heap.get(index-1);
+//		heap.add(newElement);
+//		//if(inOrder(index, r))
+//	}
+	
 	private void buildHeap(){
 		for(int i = heapsize/2; i > 0; i--){
 			heapify(i);
@@ -44,11 +50,11 @@ public abstract class Heap<E extends Comparable<E>> {
 	
 	// Use -1 to account for mandatory 1th indexed heap
 	public void exchange(Integer l, Integer r){
-		E left = heap.get(l-1);
-		E right = heap.get(r-1);
+		E left = getAt(l);
+		E right = getAt(r);
 		
-		heap.set(l-1, right);
-		heap.set(r-1, left);
+		setAt(l, right);
+		setAt(r, left);
 	}
 	
 	private Integer findLargest(Integer l, Integer r, Integer root){
@@ -74,6 +80,14 @@ public abstract class Heap<E extends Comparable<E>> {
 	
 	private Integer parent(Integer node){
 		return node/2;
+	}
+	
+	protected E getAt(int index){
+		return heap.get(index-1);
+	}
+	
+	protected void setAt(int index, E element){
+		heap.set(index-1, element);
 	}
 	
 	// Use -1 to account for mandatory 1th indexed heap
