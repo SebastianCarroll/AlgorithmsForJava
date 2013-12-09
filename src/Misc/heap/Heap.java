@@ -24,11 +24,16 @@ public abstract class Heap<E extends Comparable<E>> {
 		}
 	}
 	
-//	public void adjust-key(Integer index, E newElement){
-//		E current = heap.get(index-1);
-//		heap.add(newElement);
-//		//if(inOrder(index, r))
-//	}
+	// TODO: Fix this method
+	public void adjustKey(Integer index, E newElement){
+		if(!inOrder(newElement, getAt(index) ) ){
+			setAt(index, newElement);
+			while(index > 1 && inOrder(getAt(parent(index)), getAt(index))){
+				exchange(index, parent(index));
+				index = parent(index);
+			}
+		}
+	}
 	
 	private void buildHeap(){
 		for(int i = heapsize/2; i > 0; i--){
@@ -59,12 +64,12 @@ public abstract class Heap<E extends Comparable<E>> {
 	
 	private Integer findLargest(Integer l, Integer r, Integer root){
 		Integer largest;
-		if(l <= heapsize && inOrder(l, root)){
+		if(l <= heapsize && inOrder(getAt(l), getAt(root))){
 			largest = l;
 		} else {
 			largest = root;
 		}
-		if(r <= heapsize && inOrder(r, largest)){
+		if(r <= heapsize && inOrder(getAt(r), getAt(largest))){
 			largest = r;
 		}
 		return largest;
@@ -83,6 +88,9 @@ public abstract class Heap<E extends Comparable<E>> {
 	}
 	
 	protected E getAt(int index){
+		if(index-1 >= heap.size()){
+			return null;
+		}
 		return heap.get(index-1);
 	}
 	
@@ -91,5 +99,5 @@ public abstract class Heap<E extends Comparable<E>> {
 	}
 	
 	// Use -1 to account for mandatory 1th indexed heap
-	protected abstract Boolean inOrder(Integer l, Integer r);
+	protected abstract Boolean inOrder(E l, E r);
 }
