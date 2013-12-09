@@ -13,10 +13,14 @@ public class MinHeap<E extends Comparable<E>> extends Heap<E> {
 	}
 	
 	// Use -1 to account for mandatory 1th indexed heap
-	protected Boolean inOrder(Integer l, Integer r){
-		// True if left < right
-		E left = heap.get(l-1);
-		E right = heap.get(r-1);
+	protected Boolean inOrder(E left, E right){
+		// True if left > right
+		if(left == null){
+			return true;
+		}
+		if(right == null){
+			return false;
+		}
 		return left.compareTo(right) <= 0;
 	}
 }

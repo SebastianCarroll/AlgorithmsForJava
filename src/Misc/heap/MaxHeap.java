@@ -13,10 +13,8 @@ public class MaxHeap<E extends Comparable<E>> extends Heap<E> {
 	}
 	
 	// Use -1 to account for mandatory 1th indexed heap
-	protected Boolean inOrder(Integer l, Integer r){
+	protected Boolean inOrder(E left, E right){
 		// True if left < right
-		E left = getAt(l);
-		E right = getAt(r);
 		return left.compareTo(right) >= 0;
 	}
 }
