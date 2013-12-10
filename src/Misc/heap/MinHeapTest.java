@@ -43,5 +43,8 @@ public class MinHeapTest {
 		
 		MinHeap<String> H = new MinHeap<String>(input);
 		H.adjustKey(4, "Aat");
+		//H.adjustKey(4, "Cat");
+		
+		assertArrayEquals(expected, H.heap.toArray());
 	}
 }

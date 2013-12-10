@@ -40,7 +40,7 @@ public abstract class Heap<E extends Comparable<E>> {
 		}
 		else{
 			setAt(index, newElement);
-			while(index > 1 && inOrder(getAt(parent(index)), getAt(index))){
+			while(index > 1 && !inOrder(getAt(parent(index)), getAt(index))){
 				exchange(index, parent(index));
 				index = parent(index);
 			}
