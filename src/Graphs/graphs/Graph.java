@@ -31,7 +31,7 @@ public class Graph {
 			if(graphIsntInitialised()){
 				initialiseGraph();
 			}
-			nodes[i] = new GraphNode(i);
+			nodes[i] = new GraphNode(i, i);
 		}
 	}
 	

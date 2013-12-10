@@ -10,7 +10,8 @@ public class GraphNode implements Comparable<GraphNode> {
 	Integer key;
 	Integer value;
 	
-	public GraphNode(Integer v){
+	public GraphNode(Integer k, Integer v){
+		key = k;
 		value = v;
 		colour = Colour.WHITE;
 		d = Integer.MAX_VALUE;

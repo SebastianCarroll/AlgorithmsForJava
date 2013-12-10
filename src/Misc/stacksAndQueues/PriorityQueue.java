@@ -10,7 +10,10 @@ public class PriorityQueue<E extends Comparable<E>> {
 	}
 	
 	public void insert(E newElement){
-		
-		
+		heap.insert(newElement);
+	}
+	
+	public E extractHead(){
+		return heap.extractHead();
 	}
 }
