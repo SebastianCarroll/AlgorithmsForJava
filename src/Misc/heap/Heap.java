@@ -47,6 +47,25 @@ public abstract class Heap<E extends Comparable<E>> {
 		}
 	}
 	
+	public E getHead(){
+		return getAt(1);
+	}
+	
+	public E extractHead(){
+		if(heap.size() < 1){
+			//TODO: Error - heap underflow
+		}
+		E head = getAt(1);
+		exchange(1, heap.size());
+		removeAt(heapsize);
+		heapify(1);
+		return head;
+	}
+	
+	public void insert(E newElement){
+		adjustKey(heap.size(), newElement);
+	}
+	
 	private void buildHeap(){
 		for(int i = heapsize/2; i > 0; i--){
 			heapify(i);
@@ -99,11 +118,21 @@ public abstract class Heap<E extends Comparable<E>> {
 		return node/2;
 	}
 	
+	private void appendToHeap(E element){
+		heap.add(element);
+		heapsize++;
+	}
+	
 	protected E getAt(int index){
 		if(index-1 >= heap.size()){
 			return null;
 		}
 		return heap.get(index-1);
+	}
+	
+	private void removeAt(int index){
+		heap.remove(index-1);
+		heapsize--;
 	}
 	
 	protected E setAt(int index, E element){
