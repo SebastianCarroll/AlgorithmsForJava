@@ -1,5 +1,7 @@
 package Graphs.graphs;
 
+import Graphs.spanningTrees.*;
+
 public class Graph {
 	GraphNode[] nodes;
 	Integer[][] edges;
@@ -8,6 +10,17 @@ public class Graph {
 		checkEdgesAreValid(inputEdges);
 		edges = inputEdges;
 		mapIntegersToNodes();
+	}
+	
+	public Graph(Integer[][] inputEdges, GraphNode[] inputNodes){
+		checkEdgesAreValid(inputEdges);
+		edges = inputEdges;
+		nodes = inputNodes;
+	}
+	
+	public GraphNode[] Prims(Integer start){
+		Prims primsRunner = new Prims(nodes, edges, start);
+		return primsRunner.search();
 	}
 	
 	public GraphNode[] BFS(Integer start){
