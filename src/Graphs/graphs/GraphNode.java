@@ -3,12 +3,12 @@ package Graphs.graphs;
 import Misc.base.Colour;
 
 public class GraphNode implements Comparable<GraphNode> {
-	Colour colour;
-	Integer d;
-	Integer f;
-	GraphNode parent;
-	Integer key;
-	Integer value;
+	public Colour colour;
+	public Integer d;
+	public Integer f;
+	public GraphNode parent;
+	public Integer key;
+	public Integer value;
 	
 	public GraphNode(Integer k, Integer v){
 		key = k;
@@ -29,6 +29,6 @@ public class GraphNode implements Comparable<GraphNode> {
 
 	@Override
 	public int compareTo(GraphNode node) {
-		return value.compareTo(node.value);
+		return key.compareTo(node.key);
 	}
 }
