@@ -16,4 +16,21 @@ public class PriorityQueue<E extends Comparable<E>> {
 	public E extractHead(){
 		return heap.extractHead();
 	}
+	
+	public boolean isEmpty(){
+		return heap.heapsize < 1;
+	}
+	
+	public boolean contains(E toCompare){
+		for(E element : heap.heap){
+			if(element.equals(toCompare)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public E[] toArray(){
+		return (E[]) heap.heap.toArray();
+	}
 }
