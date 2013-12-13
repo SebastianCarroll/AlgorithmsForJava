@@ -25,9 +25,11 @@ public class PriorityQueueTest {
 		PriorityQueue<GraphNode> pQ = new PriorityQueue<>(elems);
 
 		assertEquals("(7)",  pQ.extractHead().stringify());
+		pQ.insert(new GraphNode(0, 11));
 		assertEquals("(8)",  pQ.extractHead().stringify());
 		assertEquals("(9)",  pQ.extractHead().stringify());
 		assertEquals("(10)",  pQ.extractHead().stringify());
+		assertEquals("(11)",  pQ.extractHead().stringify());
 	}
 
 }
