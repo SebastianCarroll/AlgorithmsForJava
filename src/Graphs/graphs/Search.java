@@ -3,9 +3,9 @@ package Graphs.graphs;
 import java.util.ArrayList;
 
 public abstract class Search {
-	GraphNode[] nodes;
-	Integer[][] edges;
-	Integer start;
+	protected GraphNode[] nodes;
+	protected Integer[][] edges;
+	protected Integer start;
 	
 	protected Search(GraphNode[] ns, Integer[][] es, Integer sn) {
 		nodes = ns;
