@@ -33,12 +33,12 @@ public class PrimsTest {
 		
 		Graph G = new Graph(edges, nodes);
 		
-		GraphNode[] mst = G.Prims(0);
+		G.Prims(0);
 		
-		assertNull(mst[0].parent);
-		assertEquals(mst[1].parent.key, new Integer(0));
-		assertEquals(mst[2].parent.key, new Integer(0));
-		assertEquals(mst[3].parent.key, new Integer(1));
+		assertNull(nodes[0].parent);
+		assertEquals(nodes[1].parent.key, new Integer(0));
+		assertEquals(nodes[2].parent.key, new Integer(0));
+		assertEquals(nodes[3].parent.key, new Integer(1));
 	}
 
 }

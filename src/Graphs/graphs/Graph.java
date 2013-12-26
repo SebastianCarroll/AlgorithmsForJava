@@ -18,9 +18,9 @@ public class Graph {
 		nodes = inputNodes;
 	}
 	
-	public GraphNode[] Prims(Integer start){
+	public void Prims(Integer start){
 		Prims primsRunner = new Prims(edges, nodes, start);
-		return primsRunner.search();
+		primsRunner.search();
 	}
 	
 	public GraphNode[] BFS(Integer start){

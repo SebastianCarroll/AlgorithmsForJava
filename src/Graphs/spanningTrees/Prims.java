@@ -19,16 +19,16 @@ public class Prims extends Search{
 		nodes[start].key = 0;
 		pQ = new PriorityQueue<GraphNode>(nodes);
 		
-		return traverseGraph();
+		traverseGraph();
+		return null;
 	}
 	
-	private GraphNode[] traverseGraph(){
+	private void traverseGraph(){
 		GraphNode u;
 		while(!pQ.isEmpty()){
 			u = pQ.extractHead();
 			iterateAdjacent(u);
 		}
-		return pQ.toArray();
 	}
 	
 	private void iterateAdjacent(GraphNode current){
