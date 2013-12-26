@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author sjc
  *
  */
-public class DFS extends Search{
+public class DFS extends Search {
 	Integer time = 0;
 	
 	public DFS (GraphNode[] ns, Integer[][] es, Integer sn) {
