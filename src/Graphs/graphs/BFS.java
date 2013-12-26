@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class BFS extends Search {
 	
 	public BFS (GraphNode[] ns, Integer[][] es, Integer sn) {
-		super(ns, es, sn);
+		super(es, ns, sn);
 	}
 	
 	public GraphNode[] search(){

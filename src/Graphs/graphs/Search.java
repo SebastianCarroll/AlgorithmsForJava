@@ -7,7 +7,7 @@ public abstract class Search {
 	protected Integer[][] edges;
 	protected Integer start;
 	
-	protected Search(GraphNode[] ns, Integer[][] es, Integer sn) {
+	protected Search(Integer[][] es, GraphNode[] ns, Integer sn) {
 		nodes = ns;
 		edges = es;
 		start = sn;
@@ -29,7 +29,7 @@ public abstract class Search {
 		Integer[] edgesFromCurrent = edges[current.value];
 		for(int i=0; i<edgesFromCurrent.length; i++){
 			Integer edge = edgesFromCurrent[i];
-			if(edge == 1){
+			if(edge != 0){
 				adj.add(nodes[i]);
 			}
 		}

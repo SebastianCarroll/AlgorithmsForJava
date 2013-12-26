@@ -12,7 +12,7 @@ public class DFS extends Search{
 	Integer time = 0;
 	
 	public DFS (GraphNode[] ns, Integer[][] es, Integer sn) {
-		super(ns, es, sn);
+		super(es, ns, sn);
 	}
 
 	public GraphNode[] search(){
