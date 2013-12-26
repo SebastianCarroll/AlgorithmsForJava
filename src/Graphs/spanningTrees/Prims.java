@@ -9,8 +9,8 @@ public class Prims extends Search{
 	
 	PriorityQueue<GraphNode> pQ;
 	
-	public Prims (GraphNode[] ns, Integer[][] es, Integer sn) {
-		super(ns, es, sn);
+	public Prims (Integer[][] es, GraphNode[] ns, Integer sn) {
+		super(es, ns, sn);
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class Prims extends Search{
 			int weight = weight(current, next);
 			if( (pQ.contains(next)) && (weight < next.key) ){
 				next.parent = current;
-				next.key = weight;
+				next.key = weight + current.key;
 			}
 		}
 	}
