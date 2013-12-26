@@ -37,7 +37,7 @@ public class Prims extends Search{
 			int weight = weight(current, next);
 			if( (pQ.contains(next)) && (weight < next.key) ){
 				next.parent = current;
-				next.key = weight + current.key;
+				next.key = weight;
 			}
 		}
 	}
