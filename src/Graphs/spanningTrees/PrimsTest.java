@@ -25,10 +25,10 @@ public class PrimsTest {
 		};
 		
 		GraphNode[] nodes = new GraphNode[]{
-				new GraphNode(1, 2),
+				new GraphNode(0, 0),
+				new GraphNode(1, 1),
 				new GraphNode(2, 2),
-				new GraphNode(3, 3),
-				new GraphNode(4, 4),
+				new GraphNode(3, 3)
 		};
 		
 		Graph G = new Graph(edges, nodes);
