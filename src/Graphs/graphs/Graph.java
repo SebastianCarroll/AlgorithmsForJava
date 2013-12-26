@@ -19,7 +19,7 @@ public class Graph {
 	}
 	
 	public GraphNode[] Prims(Integer start){
-		Prims primsRunner = new Prims(nodes, edges, start);
+		Prims primsRunner = new Prims(edges, nodes, start);
 		return primsRunner.search();
 	}
 	
