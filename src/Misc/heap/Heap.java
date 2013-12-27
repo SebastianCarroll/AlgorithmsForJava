@@ -109,11 +109,6 @@ public abstract class Heap<E extends Comparable<E>> {
 		return node/2;
 	}
 	
-	private void appendToHeap(E element){
-		heap.add(element);
-		heapsize++;
-	}
-	
 	protected E getAt(int index){
 		if(index-1 >= heap.size()){
 			return null;

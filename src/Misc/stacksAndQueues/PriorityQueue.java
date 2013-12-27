@@ -29,12 +29,4 @@ public class PriorityQueue<E extends Comparable<E>> {
 		}
 		return false;
 	}
-	
-	public E[] toArray(){
-		E[] ret = (E[]) new Object[heap.heap.size()];
-		for(int i=0; i<heap.heap.size(); i++){
-			ret[i] = heap.heap.get(i);
-		}
-		return ret;
-	}
 }
