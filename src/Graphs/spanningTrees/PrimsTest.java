@@ -11,11 +11,6 @@ import Graphs.graphs.Graph;
 public class PrimsTest {
 
 	@Test
-	public void testSearch() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testPrims() {
 		Integer[][] edges = new Integer[][]{
 				{0,1,2,3},
