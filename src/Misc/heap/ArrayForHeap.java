@@ -6,12 +6,12 @@ public abstract class ArrayForHeap<E extends Comparable<E>> {
 	private ArrayList<E> heap = new ArrayList<E>();
 	private Integer heapsize = 0;
 	
-	public ArrayForHeap(E[] initialElements){
+	protected ArrayForHeap(E[] initialElements){
 		mapToArrayList(initialElements);
 		heapsize = heap.size();
 	}
 	
-	public Integer heapsize(){
+	protected Integer heapsize(){
 		return heapsize;
 	}
 	
@@ -21,27 +21,34 @@ public abstract class ArrayForHeap<E extends Comparable<E>> {
 		}
 	}
 	
-	public E get(int index){
+	protected E get(int index){
 		if(index-1 >= heapsize){
 			throw new IndexOutOfBoundsException();
 		}
 		return heap.get(index-1);
 	}
 	
-	public E set(int index, E element){
+	protected E set(int index, E element){
 		return heap.set(index-1, element);
 	}
 	
-	public void remove(int index){
+	protected void remove(int index){
 		heap.remove(index-1);
 		heapsize--;
 	}
 	
-	public void add(E newElement){
+	protected void add(E newElement){
 		heap.add(newElement);
 		heapsize++;
 	}
 	
-	
+	protected Boolean contains(E toCompare){
+		for(E element : heap){
+			if(element.equals(toCompare)){
+				return true;
+			}
+		}
+		return false;
+	}
 	
 }
