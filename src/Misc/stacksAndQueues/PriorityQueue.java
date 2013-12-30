@@ -22,11 +22,6 @@ public class PriorityQueue<E extends Comparable<E>> {
 	}
 	
 	public boolean contains(E toCompare){
-		for(E element : heap.heap){
-			if(element.equals(toCompare)){
-				return true;
-			}
-		}
-		return false;
+		return heap.contains(toCompare);
 	}
 }
