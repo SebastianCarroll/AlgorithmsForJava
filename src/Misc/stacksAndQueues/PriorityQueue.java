@@ -18,7 +18,7 @@ public class PriorityQueue<E extends Comparable<E>> {
 	}
 	
 	public boolean isEmpty(){
-		return heap.heapsize < 1;
+		return heap.heapsize() < 1;
 	}
 	
 	public boolean contains(E toCompare){
