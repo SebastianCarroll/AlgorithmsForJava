@@ -11,14 +11,14 @@ public abstract class ArrayForHeap<E extends Comparable<E>> {
 		heapsize = heap.size();
 	}
 	
-	protected Integer heapsize(){
-		return heapsize;
-	}
-	
 	private void mapToArrayList(E[] initialElements){
 		for(E elem : initialElements){
 			heap.add(elem);
 		}
+	}
+	
+	protected Integer heapsize(){
+		return heapsize;
 	}
 	
 	protected E get(int index){
@@ -42,6 +42,12 @@ public abstract class ArrayForHeap<E extends Comparable<E>> {
 		heapsize++;
 	}
 	
+	/**
+	 * Attempts to find the specified element in the heap.
+	 * TODO: This is a heap and thus this compare can be more efficient
+	 * @param toCompare Item to find
+	 * @return True if found, false otherwise
+	 */
 	public Boolean contains(E toCompare){
 		for(E element : heap){
 			if(element.equals(toCompare)){
@@ -51,10 +57,17 @@ public abstract class ArrayForHeap<E extends Comparable<E>> {
 		return false;
 	}
 	
+	/**
+	 * Checks if there are elements in the heap
+	 * @return True if heap is not empty
+	 */
 	public boolean isEmpty() {
 		return heapsize() < 1;
 	}
 	
+	/**
+	 * Decreases the use-able size of the heap, without removing those elements
+	 */
 	public void decrementSize(){
 		heapsize--;
 	}
