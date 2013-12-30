@@ -2,6 +2,12 @@ package Misc.stacksAndQueues;
 
 import Misc.heap.*;
 
+/**
+ * TODO: This class seems redundant. All it does is wrap the MinHeap class and pass the methods through
+ * @author sjc
+ *
+ * @param <E>
+ */
 public class PriorityQueue<E extends Comparable<E>> {
 	MinHeap<E> heap;
 	
@@ -18,7 +24,7 @@ public class PriorityQueue<E extends Comparable<E>> {
 	}
 	
 	public boolean isEmpty(){
-		return heap.heapsize() < 1;
+		return heap.isEmpty();
 	}
 	
 	public boolean contains(E toCompare){

@@ -34,7 +34,7 @@ public class HeapSort {
 		MaxHeap<E> heap = new MaxHeap<E>(elements);
 		for(int i=elements.length; i > 1; i--){
 			heap.exchange(1, i);
-			heap.heapsize--;
+			heap.decrementSize();
 			heap.heapify(1);
 		}
 		return heap;

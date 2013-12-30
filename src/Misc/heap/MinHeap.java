@@ -23,4 +23,5 @@ public class MinHeap<E extends Comparable<E>> extends Heap<E> {
 		}
 		return left.compareTo(right) <= 0;
 	}
+
 }

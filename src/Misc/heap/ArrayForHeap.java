@@ -42,7 +42,7 @@ public abstract class ArrayForHeap<E extends Comparable<E>> {
 		heapsize++;
 	}
 	
-	protected Boolean contains(E toCompare){
+	public Boolean contains(E toCompare){
 		for(E element : heap){
 			if(element.equals(toCompare)){
 				return true;
@@ -51,4 +51,11 @@ public abstract class ArrayForHeap<E extends Comparable<E>> {
 		return false;
 	}
 	
+	public boolean isEmpty() {
+		return heapsize() < 1;
+	}
+	
+	public void decrementSize(){
+		heapsize--;
+	}
 }

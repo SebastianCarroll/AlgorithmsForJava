@@ -14,7 +14,7 @@ public class HeapSortTest {
 		
 		MaxHeap<String> heap = HeapSort.sort(TestArray);
 		
-		assertArrayEquals(ExpectedSorted, heap.heap.toArray());
+		assertArrayEquals(ExpectedSorted, TestArray);
 	}
 	
 	@Test
@@ -26,7 +26,7 @@ public class HeapSortTest {
 		
 		MaxHeap<String> heap = HeapSort.sort(TestArray);
 		
-		assertArrayEquals(ExpectedSorted, heap.heap.toArray());
+		assertArrayEquals(ExpectedSorted, TestArray);
 	}
 	
 	@Test
@@ -36,7 +36,7 @@ public class HeapSortTest {
 		
 		MaxHeap<String> heap = HeapSort.sort(TestArray);
 		
-		assertArrayEquals(ExpectedSorted, heap.heap.toArray());
+		assertArrayEquals(ExpectedSorted, TestArray);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -58,6 +58,6 @@ public class HeapSortTest {
 		
 		MaxHeap<Integer> heap = HeapSort.sort(TestArray);
 		
-		assertArrayEquals(ExpectedSorted, heap.heap.toArray());
+		assertArrayEquals(ExpectedSorted, TestArray);
 	}
 }
