@@ -15,17 +15,6 @@ public class MinHeapTest {
 	}
 	
 	@Test
-	public void TestInitialMinHeapConstructionIsCorrect() {
-		String[] input = new String[]{"Rat", "Bat", "Tat"};
-		
-		String[] expected = new String[]{"Bat", "Rat", "Tat"};
-		
-		MinHeap<String> H = new MinHeap<String>(input);
-		
-		assertArrayEquals(expected, input);
-	}
-	
-	@Test
 	public void TestInsert() {
 	
 		String[] input = new String[]{"Rat", "Bat", "Tat"};
@@ -35,7 +24,7 @@ public class MinHeapTest {
 		MinHeap<String> H = new MinHeap<String>(input);
 		H.insert("Aat");
 		
-		assertArrayEquals(expected, input);
+		assertArrayEquals(expected, H.getHeap());
 	}
 	
 	@Test
@@ -47,19 +36,17 @@ public class MinHeapTest {
 		MinHeap<String> H = new MinHeap<String>(input);
 		H.adjustKey(2, "Aat");
 		
-		assertArrayEquals(expected, input);
+		assertEquals(expected[0], H.extractHead());
 	}
 	
 	@Test
 	public void TestExtractMin() {
 		String[] input = new String[]{"Rat", "Bat", "Tat"};
 		
-		String[] expected = new String[]{"Rat", "Tat"};
-		
 		MinHeap<String> H = new MinHeap<String>(input);
 		String min = H.extractHead();
 		assertEquals(min, "Bat");
-		assertArrayEquals(expected, input);
 		assertEquals(H.extractHead(), "Rat");
+		assertEquals(H.extractHead(), "Tat");
 	}
 }

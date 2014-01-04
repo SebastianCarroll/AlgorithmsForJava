@@ -23,7 +23,8 @@ public class MaxHeapTest {
 		
 		MaxHeap<String> H = new MaxHeap<String>(input);
 		
-		assertArrayEquals(expected, input);
+		assertEquals(H.extractHead(), expected[0]);
+		assertEquals(H.extractHead(), expected[1]);
 	}
 
 }

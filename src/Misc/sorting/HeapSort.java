@@ -12,7 +12,7 @@ public class HeapSort {
 	 * @param elements Array of unsorted elements
 	 * @return Array of sorted elements
 	 */
-	public static <E extends Comparable<E>> MaxHeap<E> sort(E[] elements){
+	public static <E extends Comparable<E>> E[] sort(E[] elements){
 		checkArrayIsNotNull(elements);
 		checkArrayIsFull(elements);
 		return heapSort(elements);
@@ -30,13 +30,13 @@ public class HeapSort {
 		}
 	}
 	
-	private static <E extends Comparable<E>> MaxHeap<E> heapSort(E[] elements){
+	private static <E extends Comparable<E>> E[] heapSort(E[] elements){
 		MaxHeap<E> heap = new MaxHeap<E>(elements);
 		for(int i=elements.length; i > 1; i--){
 			heap.exchange(1, i);
 			heap.decrementSize();
 			heap.heapify(1);
 		}
-		return heap;
+		return heap.getHeap();
 	}	
 }

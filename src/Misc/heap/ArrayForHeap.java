@@ -2,11 +2,13 @@ package Misc.heap;
 
 import java.util.ArrayList;
 
-public abstract class ArrayForHeap<E extends Comparable<E>> {
+public class ArrayForHeap<E extends Comparable<E>> {
 	private ArrayList<E> heap = new ArrayList<E>();
 	private Integer heapsize = 0;
+	private E[] initialElementsSaved;
 	
-	protected ArrayForHeap(E[] initialElements){
+	public ArrayForHeap(E[] initialElements){
+		initialElementsSaved = initialElements;
 		mapToArrayList(initialElements);
 		heapsize = heap.size();
 	}
@@ -17,27 +19,27 @@ public abstract class ArrayForHeap<E extends Comparable<E>> {
 		}
 	}
 	
-	protected Integer heapsize(){
+	public Integer heapsize(){
 		return heapsize;
 	}
 	
-	protected E get(int index){
+	public E get(int index){
 		if(index-1 >= heapsize){
 			throw new IndexOutOfBoundsException();
 		}
 		return heap.get(index-1);
 	}
 	
-	protected E set(int index, E element){
+	public E set(int index, E element){
 		return heap.set(index-1, element);
 	}
 	
-	protected void remove(int index){
+	public void remove(int index){
 		heap.remove(index-1);
 		heapsize--;
 	}
 	
-	protected void add(E newElement){
+	public void add(E newElement){
 		heap.add(newElement);
 		heapsize++;
 	}
@@ -70,5 +72,9 @@ public abstract class ArrayForHeap<E extends Comparable<E>> {
 	 */
 	public void decrementSize(){
 		heapsize--;
+	}
+	
+	public E[] toArray(){
+		return heap.toArray(initialElementsSaved);
 	}
 }
